@@ -13,7 +13,7 @@ public interface TrainingRepository extends MongoRepository<Training, String> {
 
     List<Training> findByUsernameAndDateTimeBetween(String username, LocalDateTime start, LocalDateTime end);
 
-    Optional<Training> findByUsernameAndExerciseNameAndDateTimeBetween(String username, String exerciseName, LocalDateTime start, LocalDateTime end);
+    Optional<Training> findByUsernameAndExerciseNameAndDateTime(String username, String exerciseName, LocalDateTime dateTime);
 
     List<Training> findByUsername(String username);
 

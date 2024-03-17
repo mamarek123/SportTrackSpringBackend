@@ -12,5 +12,5 @@ public record AddTrainingRequestDto(
         @NotBlank(message = "exerciseName cannot be blank") String exerciseName,
         @NotBlank(message = "erepsAndWeights cannot be blank") String repsAndWeights,
         @NotBlank(message = "note cannot be blank") String note,
-        @NotBlank(message = "dateTime cannot be blank") LocalDateTime dateTime) {
+        @NotNull LocalDateTime dateTime) {
 }

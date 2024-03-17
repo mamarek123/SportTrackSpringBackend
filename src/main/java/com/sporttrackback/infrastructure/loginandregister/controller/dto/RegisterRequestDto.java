@@ -1,4 +1,4 @@
-package com.sporttrackback.domain.loginAndRegister.DTO;
+package com.sporttrackback.infrastructure.loginandregister.controller.dto;
 
 import lombok.Builder;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Builder
-public record UserRequestDto(
+public record RegisterRequestDto(
         @NotBlank(message = "Username cannot be blank")
         String username,
 

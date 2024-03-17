@@ -1,6 +1,6 @@
 package com.sporttrackback.infrastructure.loginandregister.controller;
 
-import com.sporttrackback.domain.loginAndRegister.DTO.UserRequestDto;
+import com.sporttrackback.infrastructure.loginandregister.controller.dto.RegisterRequestDto;
 import com.sporttrackback.domain.loginAndRegister.DTO.UserResultDto;
 import com.sporttrackback.domain.loginAndRegister.LoginAndRegisterFacade;
 import com.sporttrackback.infrastructure.loginandregister.controller.dto.RegisterResponseDto;
@@ -22,8 +22,8 @@ public class RegisterController {
     private final PasswordEncoder bCryptPasswordEncoder;
 
     @PostMapping("/register")
-    ResponseEntity<RegisterResponseDto> RegisterUser(@RequestBody @Valid UserRequestDto userRequestDto){
-        UserRequestDto userEncodedRequestDto = UserRequestDto.builder()
+    ResponseEntity<RegisterResponseDto> RegisterUser(@RequestBody @Valid RegisterRequestDto userRequestDto){
+        RegisterRequestDto userEncodedRequestDto = RegisterRequestDto.builder()
                 .password(bCryptPasswordEncoder.encode(userRequestDto.password()))
                 .username(userRequestDto.username())
                 .build();

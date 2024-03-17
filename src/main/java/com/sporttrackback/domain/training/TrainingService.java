@@ -20,13 +20,11 @@ public class TrainingService {
 
     String getIdForTrainingWithGivenUsernameExerciseAndDate(String username, DeleteTrainingRequestDto deleteTrainingRequestDto) {
         String exerciseName = deleteTrainingRequestDto.exerciseName();
-        LocalDate date = deleteTrainingRequestDto.date().toLocalDate();
 
-        LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
-        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+        LocalDateTime dateTime = deleteTrainingRequestDto.date();
 
-        Optional<Training> training = trainingRepository.findByUsernameAndExerciseNameAndDateTimeBetween(username,exerciseName,startOfDay,endOfDay);
-        return training.orElseThrow(() -> new TrainingNotFound("No trainings found for user " + username + " on " + date)).id();
+        Optional<Training> training = trainingRepository.findByUsernameAndExerciseNameAndDateTime(username,exerciseName,dateTime);
+        return training.orElseThrow(() -> new TrainingNotFound("No training for " + exerciseName +" found for user " + username + " on " + dateTime)).id();
     }
 
     List<String> getDistinctExercisesForUser(String username) {

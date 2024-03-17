@@ -52,8 +52,6 @@ public class SecurityConfig {
         httpSecurity.csrf().disable();
         httpSecurity.cors().configurationSource(corsConfigurationSource());
         httpSecurity.authorizeRequests()
-                .antMatchers("/v3/api-docs").permitAll()
-                .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/token/**").permitAll()
                 .antMatchers("/register/**").permitAll()
                 .anyRequest().authenticated()
