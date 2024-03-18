@@ -18,15 +18,6 @@ import java.util.stream.Collectors;
 public class TrainingService {
     private final TrainingRepository trainingRepository;
 
-    String getIdForTrainingWithGivenUsernameExerciseAndDate(String username, DeleteTrainingRequestDto deleteTrainingRequestDto) {
-        String exerciseName = deleteTrainingRequestDto.exerciseName();
-
-        LocalDateTime dateTime = deleteTrainingRequestDto.date();
-
-        Optional<Training> training = trainingRepository.findByUsernameAndExerciseNameAndDateTime(username,exerciseName,dateTime);
-        return training.orElseThrow(() -> new TrainingNotFound("No training for " + exerciseName +" found for user " + username + " on " + dateTime)).id();
-    }
-
     List<String> getDistinctExercisesForUser(String username) {
         List<Training> trainings = trainingRepository.findByUsername(username);
         return trainings.stream()
@@ -48,5 +39,12 @@ public class TrainingService {
     Training addTrainingForUser(AddTrainingRequestDto addTrainingRequestDto, String username) {
         Training insert = trainingRepository.insert(TrainingMapper.addTrainingRequestDtoAndUserToTraining(addTrainingRequestDto, username));
         return insert;
+    }
+
+    void verifyAndDeleteTraining(DeleteTrainingRequestDto deleteTrainingRequestDto, String username) {
+        String id = deleteTrainingRequestDto.id();
+        Training training = trainingRepository.findById(id).orElseThrow(() -> new TrainingNotFound("Training with id " + id + " notFound"));
+        if (training.username().equals(username))
+            trainingRepository.deleteById(id);
     }
 }

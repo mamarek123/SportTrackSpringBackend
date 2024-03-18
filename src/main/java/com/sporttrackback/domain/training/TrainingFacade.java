@@ -37,7 +37,6 @@ public class TrainingFacade {
     }
 
     public void deleteTraining(DeleteTrainingRequestDto deleteTrainingRequestDto, String username){
-        String id = trainingService.getIdForTrainingWithGivenUsernameExerciseAndDate(username,deleteTrainingRequestDto);
-        trainingRepository.deleteById(id);
+        trainingService.verifyAndDeleteTraining(deleteTrainingRequestDto, username);
     }
 }

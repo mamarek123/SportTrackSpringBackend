@@ -5,6 +5,5 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public record DeleteTrainingRequestDto(
-        @NotBlank(message = "exerciseName cannot be blank") String exerciseName,
-        @NotNull LocalDateTime date) {
+        @NotBlank(message = "id cannot be blank") @NotNull(message = "id cannot be null") String id){
 }

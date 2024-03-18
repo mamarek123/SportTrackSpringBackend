@@ -12,9 +12,6 @@ public interface TrainingRepository extends MongoRepository<Training, String> {
     List<Training> findByUsernameAndExerciseName(String userId, String exerciseName);
 
     List<Training> findByUsernameAndDateTimeBetween(String username, LocalDateTime start, LocalDateTime end);
-
-    Optional<Training> findByUsernameAndExerciseNameAndDateTime(String username, String exerciseName, LocalDateTime dateTime);
-
     List<Training> findByUsername(String username);
 
 

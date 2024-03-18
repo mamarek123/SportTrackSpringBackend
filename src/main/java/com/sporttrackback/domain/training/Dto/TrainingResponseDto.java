@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 
 
 @Builder
-public record TrainingResponseDto(String exerciseName,
+public record TrainingResponseDto(String id,
+                                  String exerciseName,
                                   String repsAndWeights,
                                   String note,
                                   LocalDateTime dateTime) {

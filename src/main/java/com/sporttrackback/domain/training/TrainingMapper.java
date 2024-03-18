@@ -15,6 +15,7 @@ public class TrainingMapper {
 
     public static TrainingResponseDto trainingToTrainingResponseDto(Training training){
         return TrainingResponseDto.builder()
+                .id(training.id())
                 .note(training.note())
                 .dateTime(training.dateTime())
                 .exerciseName(training.exerciseName())
