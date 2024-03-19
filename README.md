@@ -1,1 +1,2 @@
-![Front](https://github.com/mamarek123/SportTrackSpringBackend/assets/122742634/1feb426c-021b-4d10-82f5-63f26cc9db6a)
+
+![Portfolio](https://github.com/mamarek123/SportTrackSpringBackend/assets/122742634/709b30c8-dbcb-4a32-983e-143794f72506)
